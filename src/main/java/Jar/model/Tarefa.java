@@ -1,6 +1,8 @@
-package Jar.model; // O nome do seu pacote "jar.model"
+package Jar.model; // Ou 'Jar.model' se você manteve o 'J' maiúsculo
 
 import java.time.LocalDate;
+
+import com.fasterxml.jackson.annotation.JsonFormat; // <-- IMPORT ADICIONADO
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -14,16 +16,19 @@ public class Tarefa {
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private Long id;
 
-    private String nome; // [cite: 13]
-    private LocalDate dataEntrega; // [cite: 14]
-    private String responsavel; // [cite: 15]
-
+    private String nome; 
     
+    @JsonFormat(pattern = "dd/MM/yyyy") // <-- ANOTAÇÃO ADICIONADA AQUI
+    private LocalDate dataEntrega; 
+    
+    private String responsavel; 
+
+    // Construtor padrão
     public Tarefa() {
     }
 
-
-
+    // --- Getters e Setters ---
+    
     public Long getId() {
         return id;
     }
